@@ -206,14 +206,26 @@ if($num<3){
 echo "<hr>";
 echo"<h2>矩形挖空</h2>";
 echo "<hr>";
-/*$num=10;
+$num=20;
 for($i=0;$i<$num;$i++){
-    
-    for($j=0;$j=$i;$j++){
-        echo "*";
+
+    if($i==0 || $i==($num-1)){
+        for($j=0;$j<$num;$j++){
+            echo"*";
     }
-    echo "<br>";
-}*/
+    }else{
+        for($j=0;$j<$num;$j++){
+            if($j==0 || $j==($num-1)){
+                echo "*";
+            }else{
+                echo "&nbsp";
+            }
+    }
+}
+echo "<br>";
+}
+    
+
 echo "<hr>";
 echo"<h2>矩形+對角線</h2>";
 echo "<hr>";
