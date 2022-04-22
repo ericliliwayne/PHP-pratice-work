@@ -33,7 +33,7 @@
     </article>
     <?php
     $str="this,is,a,book";
-    $array=explode(",",$str);
+    $array=explode(",",$str);//explode
     echo "<pre>";
     print_r($array);
     echo "</pre>";
@@ -47,7 +47,14 @@
         </div>
     </article>
     <?php
+        $str="this,is,a,book";
+        $array=explode(",",$str);
+        //echo "<pre>";
+        //print_r($array);
+        //echo "</pre>";
 
+        $newstr=join(" ",$array);//或用implode(" ",$array)也可達成相同結果
+        echo $newstr;
     ?>
 
 </body>
