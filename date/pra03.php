@@ -15,6 +15,15 @@
             text-align: center;
             border: 1px solid #aaa;
         }
+        .weekend{
+            background: pink;
+        }
+        .workday{
+            background: white;
+        }
+        .today{
+            background: lightgreen;
+        }
     </style>
 </head>
 <body>
@@ -36,6 +45,7 @@
         $firstweekday=date("w",strtotime($firstday));//計算當月第一天是星期幾
         $monthdays=date("t",strtotime($firstday));//第一天的日期並轉成秒數
         $lastday=date("Y-").$month."-".$monthdays;
+        $today=date("Y-m-d");
         echo "當月分是:".$month."月";
         echo "<br>";
         echo "第一天是:".$firstday;
@@ -51,7 +61,7 @@
 
             for($j=0;$j<7;$j++){
                 $d=$i*7+($j+1)-$firstweekday-1;
-                echo "<td>";
+                //echo "<td>";
                 //echo $d;
                 if($d>=0 && $d<$monthdays){
                     $fs=strtotime($firstday);
