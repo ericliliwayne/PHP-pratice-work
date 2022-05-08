@@ -5,6 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>日曆自主練習</title>
+    <style>
+        .table{
+            width:560px;
+            height:560px;
+            /* border:1px solid green; */
+            display:flex;
+            flex-wrap:wrap;
+            align-content: baseline;
+            margin-left:1px;
+            margin-top:1px;
+            font-family: '標楷體';
+            font-size: 50px;
+            text-align: center;
+        }
+        .table div{
+            display:inline-block;
+            width:80px;
+            height:80px;
+            border:1px solid #999;
+            box-sizing: border-box;
+            margin-left:-1px;
+            margin-top:-1px;
+        }
+        .table div.header{
+            background:black;
+            color:white;
+            height: 70px;
+        }
+        .weekend{
+            background:pink;
+        }
+        .workday{
+            background:lightgoldenrodyellow;
+        }
+        .today{
+            background:lightseagreen;
+        }
+    </style>
 </head>
 <body>
     <h1>日期練習</h1>
@@ -46,6 +84,45 @@
         echo "當月(".$month."月)最後一天是在星期: $lastWeekday "."(date的w屬性值)，換成中文是:".$b[date("w",strtotime($lastDay))];
         echo "<hr>";
         echo "<hr>";
+        $datehouse=[];
+        
+        for($i=0;$i<$firstWeekday;$i++){
+            $datehouse[]="";
+        }
+        for($i=0;$i<$monthDays;$i++){
+            $date=date("Y-m-d",strtotime("+$i days",strtotime($firstDay)));
+            $datehouse[]=$date;
+        }
+        for($i=0;$i<(6-$lastWeekday);$i++){
+            $datehouse[]="";
+        }
     ?>
+    <div class="table">
+
+<div class='header'>日</div>
+<div class='header'>一</div>
+<div class='header'>二</div>
+<div class='header'>三</div>
+<div class='header'>四</div>
+<div class='header'>五</div>
+<div class='header'>六</div>
+<?php
+foreach($datehouse as $k => $day){
+    $hol=($k%7==0 || $k%7==6)?'weekend':'workday';//判定假日與非假日套用CSS
+    
+    if(!empty($day)){
+        $dayFormat=date("j",strtotime($day));
+        echo "<div class='{$hol}'>{$dayFormat}</div>";
+    }else{
+        echo "<div class='{$hol}'></div>";
+
+    }
+    
+}
+
+
+
+?>
+</div>
 </body>
 </html>
